@@ -1,0 +1,23 @@
+FROM tatsushid/tinycore:7.2-x86_64
+
+ADD tinycore/opam.tcz /
+
+RUN sudo ln -s /lib /lib64 \
+  && tce-load -wic compiletc.tcz \
+  && tce-load -wic wget.tcz \
+  && tce-load -ic /opam.tcz \
+  && export OPAMEXTERNALSOLVER=/usr/local/lib/aspcud/aspcud \
+  && opam init -y -a --comp=4.03.0 \
+  && eval `opam config env` \
+  && opam install oasis \
+  && mkdir /home/tc/app
+
+ADD src /home/tc/app/src
+ADD _oasis /home/tc/app
+
+WORKDIR /home/tc/app
+RUN export OPAMEXTERNALSOLVER=/usr/local/lib/aspcud/aspcud \
+  && eval `opam config env` \
+  && oasis setup \
+  && ocaml setup.ml -configure \
+  && ocaml setup.ml -build

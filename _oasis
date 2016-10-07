@@ -1,0 +1,20 @@
+OASISFormat: 0.4
+Name:        tomtom-runner-databox-driver
+Version:     0.1.0
+Synopsis:    Databox driver for the TomTom Runner
+Description: 
+  A Databox driver for the TomTom Runner GPS watch. Runs as a Docker application
+  that connects to the TomTom API to periodically extract data and commit to the
+  relevant datastore.
+Authors:     Dominic Price
+Copyrights:  (C) 2016 Horizon Digital Economy Research
+LicenseFile: LICENSE
+License:     ISC
+Homepage:    https://github.com/dominicjprice/tomtom-runner-databox-driver
+BuildTools:  ocamlbuild
+
+Executable main
+  Path:        src
+  Install:     true
+  MainIs:      main.ml
+  CompiledObject: native
