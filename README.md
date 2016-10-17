@@ -1,4 +1,4 @@
-# TomTom Runner Databox Driver
+# TomTom MySports Cloud Databox Driver
 > Databox driver for the TomTom MySports Cloud.
 
 A databox driver for the TomTom MySports Cloud. Currently in development
