@@ -1,8 +1,7 @@
 # TomTom Runner Databox Driver
-> Databox driver for the TomTom Runner/Spark series of watches.
+> Databox driver for the TomTom MySports Cloud.
 
-A databox driver for the TomTom Runner/Spark series of watches. Currently
-in development
+A databox driver for the TomTom MySports Cloud. Currently in development
 
 ## Installation
 
@@ -35,6 +34,4 @@ licensed under the [GNU GPLv2 License](https://www.gnu.org/licenses/old-licenses
 * ``tinycore/opam.tcz`` contains software from [OPAM](https://opam.ocaml.org/)
 licensed under the [GNU LGPLv2.1 License](https://github.com/ocaml/opam/blob/master/LICENSE).
 
-
-
-[https://github.com/me-box/tomtom-runner-databox-driver](https://github.com/me-box/tomtom-runner-databox-driver)
+<https://github.com/me-box/tomtom-mysports-cloud-databox-driver>
