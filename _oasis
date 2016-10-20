@@ -1,16 +1,15 @@
 OASISFormat: 0.4
-Name:        tomtom-runner-databox-driver
+Name:        tomtom-mysports-cloud-databox-driver
 Version:     0.1.0
-Synopsis:    Databox driver for the TomTom Runner
+Synopsis:    Databox driver for the TomTom MySports Cloud.
 Description: 
-  A Databox driver for the TomTom Runner GPS watch. Runs as a Docker application
-  that connects to the TomTom API to periodically extract data and commit to the
-  relevant datastore.
+  Runs as a Docker application that connects to the TomTom API to periodically
+  extract data and commit to the relevant datastore.
 Authors:     Dominic Price
 Copyrights:  (C) 2016 Horizon Digital Economy Research
 LicenseFile: LICENSE
 License:     ISC
-Homepage:    https://github.com/dominicjprice/tomtom-runner-databox-driver
+Homepage:    https://github.com/dominicjprice/tomtom-mysports-cloud-databox-driver
 BuildTools:  ocamlbuild
 
 Executable main
@@ -18,3 +17,12 @@ Executable main
   Install:     true
   MainIs:      main.ml
   CompiledObject: native
+  BuildDepends:
+    lwt,
+    lwt.ppx,
+    logs,
+    cohttp.lwt,
+    uri,
+    yojson,
+    atdgen,
+    result

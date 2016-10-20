@@ -1,7 +1,7 @@
 # TomTom MySports Cloud Databox Driver
 > Databox driver for the TomTom MySports Cloud.
 
-A databox driver for the TomTom MySports Cloud. Currently in development
+A Databox driver for the TomTom MySports Cloud. Currently in development.
 
 ## Installation
 
@@ -27,11 +27,19 @@ You are then able to run ``make`` to build the Docker container.
 Distributed under the ISC license. See ``LICENSE`` for more information.
 
 Third Party Component Licenses:
-* ``tinycore/docker.tcz`` contains software from [Docker](https://www.docker.com/)
-licensed under the [Apache 2.0 License](https://github.com/docker/docker/blob/master/LICENSE).
-* ``tinycore/iptables.tcz`` contains software from [Netfilter](https://www.netfilter.org/)
-licensed under the [GNU GPLv2 License](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
-* ``tinycore/opam.tcz`` contains software from [OPAM](https://opam.ocaml.org/)
-licensed under the [GNU LGPLv2.1 License](https://github.com/ocaml/opam/blob/master/LICENSE).
+* ``tinycore/docker.tcz`` contains software from [Docker][docker]
+licensed under the [Apache 2.0 License][apache-2.0-license].
+* ``tinycore/iptables.tcz`` contains software from [Netfilter][netfilter]
+licensed under the [GNU GPLv2 License][gplv2-license].
+* ``tinycore/opam.tcz`` contains software from [OPAM][opam]
+licensed under the [GNU LGPLv2.1 License][lgplv2.1-license].
 
 <https://github.com/me-box/tomtom-mysports-cloud-databox-driver>
+
+[docker]: https://www.docker.com/
+[apache-2.0-license]: https://github.com/docker/docker/blob/master/LICENSE
+[netfilter]: https://www.netfilter.org/
+[gplv2-license]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+[opam]: https://opam.ocaml.org/
+[lgplv2.1-license]: https://github.com/ocaml/opam/blob/master/LICENSE
+

@@ -8,12 +8,20 @@ RUN sudo ln -s /lib /lib64 \
   && tce-load -ic /opam.tcz \
   && export OPAMEXTERNALSOLVER=/usr/local/lib/aspcud/aspcud \
   && opam init -y -a --comp=4.03.0 \
-  && eval `opam config env` \
-  && opam install oasis \
   && mkdir /home/tc/app
+
+RUN export OPAMEXTERNALSOLVER=/usr/local/lib/aspcud/aspcud \
+  && opam install oasis.0.4.7 yojson.1.3.2 lwt.2.5.2 uri.1.9.2 \
+  cohttp.0.21.0 atdgen.1.10.0 logs.0.6.2 result.1.2
 
 ADD src /home/tc/app/src
 ADD _oasis /home/tc/app
+
+WORKDIR /home/tc/app/src
+RUN eval `opam config env` && \
+  echo $USER && \
+  sudo atdgen -t databox_directory_types.atd && \
+  sudo atdgen -j databox_directory_types.atd
 
 WORKDIR /home/tc/app
 RUN export OPAMEXTERNALSOLVER=/usr/local/lib/aspcud/aspcud \

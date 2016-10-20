@@ -1,5 +1,6 @@
-NAME = tomtom-runner-databox-driver
+NAME = tomtom-mysports-cloud-databox-driver
 EXECUTABLE = main.native
+DATABOX_DIRECTORY_ENDPOINT ?= http://localhost
 
 build:
 	docker build -f Dockerfile.build -t $(NAME):build .
@@ -7,8 +8,9 @@ build:
 	docker build -t $(NAME) .
 	rm -f $(EXECUTABLE)
 	
-run:
-	docker run $(NAME)
+run: build
+	docker run -p "8080:8080" -e \
+			"DATABOX_DIRECTORY_ENDPOINT=$(DATABOX_DIRECTORY_ENDPOINT)" $(NAME)
 
 clean:
 	docker rmi $(NAME):build
