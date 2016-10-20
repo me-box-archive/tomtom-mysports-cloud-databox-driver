@@ -26,7 +26,6 @@ Vagrant.configure(2) do |config|
         sudo sh -c "echo $1 >> /etc/sysconfig/tcedir/onboot.lst"
       fi
     }
-    install_tcz opam.tcz
     install_tcz iptables.tcz
     install_tcz docker.tcz
 
@@ -62,14 +61,6 @@ Vagrant.configure(2) do |config|
       echo "export DOCKER_RAMDISK=true" >> /opt/bootlocal.sh
       echo "/usr/local/bin/dockerd -s overlay2 &> /dev/null &" >> /opt/bootlocal.sh  
     fi
-
-  SHELL
-
-  config.vm.provision "shell", privileged: false, inline: <<-SHELL
-   
-    export PATH=/usr/local/bin:$PATH
-    opam init -y -a --comp=4.03.0
-    opam install oasis
 
   SHELL
  

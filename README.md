@@ -18,8 +18,7 @@ box.
 If you do not wish to use Vagrant, you will need the following installed:
 * GNU Make
 * [Docker](https://www.docker.com/)
-* [OPAM](https://opam.ocaml.org/) with OCaml 4.03.0 or greater
-* [OASIS](http://oasis.forge.ocamlcore.org/) (available through OPAM)
+
 You are then able to run ``make`` to build the Docker container. 
 
 ## Meta
