@@ -16,8 +16,7 @@ Vagrant.configure(2) do |config|
     
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
   
-    tce-load -wi wget bash git gcc make m4 rsync glibc_base-dev \
-        linux-4.2.1_api_headers flex glibc_add_lib procps xz
+    tce-load -wi make
     
     install_tcz() {
       sudo cp /vagrant/tinycore/$1 /etc/sysconfig/tcedir/optional
@@ -38,20 +37,28 @@ Vagrant.configure(2) do |config|
       cp /vagrant/tinycore/ca-certificates.crt /etc/ssl/certs
     fi
     
+    if [ -z "`cat /opt/.filetool.lst | grep /etc/fstab`" ]; then
+      cp -pr /var /mnt/sda1
+      mount --bind /mnt/sda1/var /var
+      echo -e "/mnt/sda1/var\t/var\tnone\tbind\t0\t0" >> /etc/fstab
+      echo "/etc/fstab" >> /opt/.firetool.lst
+      /usr/bin/filetool.sh -b
+    fi
+    
     if [ -z "`cat /opt/.filetool.lst | grep ca-certificates.crt`" ]; then
-    	echo "/etc/ssl/certs/ca-certificates.crt" >> /opt/.filetool.lst
-    	/usr/bin/filetool.sh -b
+      echo "/etc/ssl/certs/ca-certificates.crt" >> /opt/.filetool.lst
+      /usr/bin/filetool.sh -b
     fi
 
     if [ -z "`cat /opt/bootlocal.sh | grep cgroupfs-mount`" ]; then
-        echo "/etc/init.d/cgroupfs-mount &> /dev/null &" >> /opt/bootlocal.sh
-        /etc/init.d/cgroupfs-mount &> /dev/null
+      echo "/etc/init.d/cgroupfs-mount &> /dev/null &" >> /opt/bootlocal.sh
+      /etc/init.d/cgroupfs-mount &> /dev/null
     fi
 
     if ! getent group docker > /dev/null; then
-        addgroup -S docker
-        addgroup vagrant docker
-        /usr/bin/filetool.sh -b
+      addgroup -S docker
+      addgroup vagrant docker
+      /usr/bin/filetool.sh -b
     fi
 
     if [ -z "`cat /opt/bootlocal.sh | grep dockerd`" ]; then
