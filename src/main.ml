@@ -1,6 +1,6 @@
 let vendor_name = "TomTom";;
 let driver_name = "MySports Cloud";;
-let driver_description = "Pulls activities from TomTom's MySports Cloud";;
+let driver_description = "Databox driver for the TomTom MySports Cloud.";;
 let datastore_name = "datastore-timeseries";;
 let sensors = Databox_directory_types_t.([
   ({ id = None; description = "activity" }, [
@@ -101,8 +101,6 @@ let register () =
     return (vendor, datastore, driver, sensors)
     
 let () =
-  Lwt.bind (register ()) (fun r ->
-    while%lwt false do
-      Logs.info (fun m -> m "Running");
-      Lwt_unix.sleep 10.0
-    done) |> Lwt_main.run 
+  Logs.info (fun m -> m "tomtom-mysports-cloud-databox-driver");
+  let open Lwt in
+  (register ()) >>= (fun _ -> return_unit) <?> Http_server.server () |> Lwt_main.run

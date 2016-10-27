@@ -17,6 +17,8 @@ Executable main
   Install:     true
   MainIs:      main.ml
   CompiledObject: native
+  NativeOpt: -ccopt '-L/home/tc/.opam/4.03.0/lib/lwt' -cclib '-static -lunix 
+    -lbigarray -lcamlstr'
   BuildDepends:
     lwt,
     lwt.ppx,

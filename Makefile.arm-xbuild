@@ -6,7 +6,7 @@ build:
 	$(eval CONTAINER := $(shell docker create $(NAME):arm-xbuild))
 	docker cp $(CONTAINER):/home/tc/app/_build/src/$(EXECUTABLE) .
 	docker rm $(CONTAINER)
-	docker build -f Dockerfile.arm -t $(NAME):arm .
+	docker build -t $(NAME):arm .
 	rm -f $(EXECUTABLE)
 
 clean:
