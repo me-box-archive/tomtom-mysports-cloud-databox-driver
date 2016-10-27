@@ -11,4 +11,4 @@ let ( >>= ) = bind
     
 let return x = Ok(x) |> Lwt.return
   
-let return_error e = Error(e) |> Lwt.return
+let fail e = Error(e) |> Lwt.return

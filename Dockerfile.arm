@@ -1,0 +1,5 @@
+FROM container4armhf/armhf-busybox:latest
+LABEL databox.type="driver"
+COPY main.native /home/tc/main.native
+ENTRYPOINT ["/home/tc/main.native"]
+EXPOSE 80

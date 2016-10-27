@@ -73,7 +73,7 @@ module Make
         conv body |> R.return
     with _ ->
       print_endline "Error :("; 
-      R.return_error `Unknown_error
+      R.fail `Unknown_error
     
   let register_vendor vendor =
     let path = "/vendor/register" in

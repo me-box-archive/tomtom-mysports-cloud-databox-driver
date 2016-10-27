@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
       cp -pr /var /mnt/sda1
       mount --bind /mnt/sda1/var /var
       echo -e "/mnt/sda1/var\t/var\tnone\tbind\t0\t0" >> /etc/fstab
-      echo "/etc/fstab" >> /opt/.firetool.lst
+      echo "/etc/fstab" >> /opt/.filetool.lst
       /usr/bin/filetool.sh -b
     fi
     
@@ -66,7 +66,9 @@ Vagrant.configure(2) do |config|
       export DOCKER_RAMDISK=true
       nohup /usr/local/bin/dockerd -s overlay2 &> /dev/null &
       echo "export DOCKER_RAMDISK=true" >> /opt/bootlocal.sh
-      echo "/usr/local/bin/dockerd -s overlay2 &> /dev/null &" >> /opt/bootlocal.sh  
+      echo "mount -a" >> /opt/bootlocal.sh
+      echo "/usr/local/bin/dockerd -s overlay2 &> /dev/null &" >> \
+          /opt/bootlocal.sh  
     fi
 
   SHELL

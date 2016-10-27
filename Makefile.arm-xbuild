@@ -1,0 +1,13 @@
+NAME = tomtom-mysports-cloud-databox-driver
+EXECUTABLE = main.native
+
+build:
+	docker build -f Dockerfile.arm-xbuild.build -t $(NAME):arm-xbuild .
+	$(eval CONTAINER := $(shell docker create $(NAME):arm-xbuild))
+	docker cp $(CONTAINER):/home/tc/app/_build/src/$(EXECUTABLE) .
+	docker rm $(CONTAINER)
+	docker build -f Dockerfile.arm -t $(NAME):arm .
+	rm -f $(EXECUTABLE)
+
+clean:
+	docker rmi $(NAME):arm-xbuild

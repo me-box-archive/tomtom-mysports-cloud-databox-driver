@@ -8,4 +8,4 @@ val ( >>= ) : ('ok, 'error) t -> ('ok -> ('b, 'error) t) -> ('b, 'error) t
     
 val return : 'ok -> ('ok, _) t
   
-val return_error : 'error -> (_, 'error) t
+val fail : 'error -> (_, 'error) t

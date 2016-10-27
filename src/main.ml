@@ -102,7 +102,7 @@ let register () =
     
 let () =
   Lwt.bind (register ()) (fun r ->
-    while%lwt true do
+    while%lwt false do
       Logs.info (fun m -> m "Running");
       Lwt_unix.sleep 10.0
     done) |> Lwt_main.run 
